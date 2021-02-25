@@ -1,0 +1,31 @@
+{
+    "name": "afrizalmy/fahp_vikor",
+    "description": "Package sederhana untuk menghitung Sistem Pendukung Keputusan menggunakan metode Fuzzy AHP dan Vikor",
+    "require": {
+        "php": ">=7.1"
+    },
+    "type": "library",
+    "keywords": [
+        "DSS",
+        "Decision Support System",
+        "Multi Criteria Decision Making",
+        "sistem pendukung keputusan",
+        "metode",
+        "fuzzy ahp",
+        "vikor"
+    ],
+    "homepage": "https://github.com/afrizal423/fahp-vikor",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "afrizal423",
+            "email": "afrizal2499@gmail.com",
+            "homepage": "https://afrizalmy.com/",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"afrizalmy\\FAHPVikor\\": "src/"}
+    },
+    "minimum-stability": "dev"
+}
