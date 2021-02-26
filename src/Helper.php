@@ -27,4 +27,12 @@ class Helper extends Base{
         return min($var);
     }
 
+    public static function Geometric_mean(array $a)
+    {
+        array_walk($a, function (&$i) {
+            $i = log($i);
+        });
+        return exp(array_sum($a)/count($a));
+    }
+
 }
