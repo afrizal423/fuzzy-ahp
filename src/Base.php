@@ -5,9 +5,9 @@ namespace afrizalmy\FAHPVikor;
 class Base
 {
 
-    protected $kriteria = [];
-    protected $nilai_pasti;
-    protected $metrics = [];
+    private $kriteria = [];
+    private $nilai_pasti;
+    private $metrics = [];
 
     private function create_matric(array $data){
         // $this->nilai_pasti = json_encode([1,1,1]);
@@ -37,7 +37,7 @@ class Base
         return $this->metrics;
     }
 
-    public function data_kriteria(array $inputan, array $data_array, $nilai)
+    public function buat_metric(array $inputan, array $data_array, $nilai)
     {
         $this->kriteria = $inputan;
         $this->sum_kriteria = count($inputan);
@@ -49,21 +49,5 @@ class Base
         $parsing["matriks"] = $this->metrics;
         // var_dump($parsing);
         return $parsing;
-    }
-
-    public function FuzzyPairWise(array $var = null)
-    {
-        if ($var == null) {
-            # ERROR HANDLING
-        }
-        // var_dump($var);
-        for ($i=0; $i <= count($this->kriteria)-1 ; $i++) { 
-            for ($j=$i; $j <= count($this->kriteria)-1; $j++) { 
-            }
-        }
-
-        
-
-        return $var;
     }
 }

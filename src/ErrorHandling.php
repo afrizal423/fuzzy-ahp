@@ -11,4 +11,20 @@ class ErrorHandling extends Base
             throw new \InvalidArgumentException('MATRIKS Pair Wise HARUS TERISI !!!!!');
         }
     }
+
+    public static function checkArrayGM($var)
+    {
+        if (!$var["nilai"]) {
+            throw new \InvalidArgumentException('ARRAY Nilai HARUS TERISI !!!!!');
+        }
+        if (!$var["total"]) {
+            throw new \InvalidArgumentException('ARRAY total HARUS TERISI !!!!!');
+        }
+        if (!$var["reverse"]) {
+            throw new \InvalidArgumentException('ARRAY reverse HARUS TERISI !!!!!');
+        }
+        if (!$var["increase"]) {
+            throw new \InvalidArgumentException('ARRAY increase HARUS TERISI !!!!!');
+        }
+    }
 }
