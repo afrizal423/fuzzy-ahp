@@ -12,6 +12,16 @@ class ErrorHandling extends Base
         }
     }
 
+    public static function checkHitungSemuaBobot($var)
+    {
+        if (!$var["bobot_kriteria"]) {
+            throw new \InvalidArgumentException('bobot_kriteria Pair Wise HARUS TERISI !!!!!');
+        }
+        if (!$var["bobot_alternatif"]) {
+            throw new \InvalidArgumentException('bobot_alternatif Pair Wise HARUS TERISI !!!!!');
+        }
+    }
+
     public static function checkArrayGM($var)
     {
         if (!$var["nilai"]) {

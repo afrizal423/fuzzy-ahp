@@ -9,6 +9,14 @@ class Helper extends Base{
     {
         return max($var);
     }
+    public static function FindMaxIndex(array $var)
+    {
+        return array_keys($var, max($var));
+    }
+    public static function FindMinIndex(array $var)
+    {
+        return array_keys($var, min($var));
+    }
     public static function FindMedian($arr) {
         $count = count($arr); //total numbers in array
         $middleval = floor(($count-1)/2); // find the middle value, or the lowest middle value

@@ -9,13 +9,6 @@ class Fahp extends Base
 {
     protected $kriteria;
     protected $metrics;
-    // function __construct(array $var)
-    // {
-    //     ErrorHandling::checkMatricsPairWise($var);
-    //     $this->kriteria = $var["kriteria"];
-    //     $this->nilai_pasti = $var["nilai_pasti"];
-    //     $this->metrics = $var["matriks"];
-    // }
 
     public function FuzzyPairWise(array $var = null)
     {
@@ -125,12 +118,54 @@ class Fahp extends Base
         $arr_normalized = [];
         for ($i=0; $i < count($this->kriteria); $i++) {
             $arr_normalized[$i] = $arr_mi[$i] / $mi_total;
-        }
+        }  
         $normalized_total = array_sum($arr_normalized);
         if ($normalized_total > 1) {
             throw new \InvalidArgumentException('Hasil tidak boleh lebih dari 1! Silahkan input ulang.');
         }
         // echo $normalized_total;
         return $arr_normalized;
+    }
+
+    public static function HitungSemuaBobot($kriteria, $arr, $alternatif)
+    {
+        ErrorHandling::checkHitungSemuaBobot($arr);
+        /**
+         * proses normalisasi matrix sesuai alternatif
+         */
+        $arr_alternatif=[];
+        for ($i=0; $i < count($alternatif); $i++) { 
+            $tmp=[];
+            // $arr_alternatif[$i] = $arr["bobot_alternatif"][$i][$i];
+            for ($j=0; $j < count($alternatif); $j++) { 
+                // echo $arr["bobot_alternatif"][$i][$i];
+                array_push($tmp,$arr["bobot_alternatif"][$i][$i]);
+            }
+            array_push($arr_alternatif,$tmp);
+            unset($tmp);
+        }
+        // var_dump($arr_alternatif);
+
+        /**
+         * perhitungan bobot
+         */
+        $arr_hasil=[];
+        for ($i=0; $i < count($kriteria); $i++) { 
+            $tmp=[];
+            for ($j=0; $j < count($alternatif); $j++) { 
+                $tmp[$i][$j] = $arr["bobot_kriteria"][$j] * $arr_alternatif[$i][$j];
+            }
+            $arr_hasil[$i] = array_sum($tmp[$i]);
+        }
+        // var_dump($arr_hasil);
+
+        $max = Helper::FindMaxIndex($arr_hasil); 
+        $min = Helper::FindMinIndex($arr_hasil);
+        $hasil_akhir=[];
+        $hasil_akhir["array_bobot"] = $arr_hasil;
+        $hasil_akhir["best_alternatif"] = array($alternatif[$max[0]] => $arr_hasil[$max[0]]);
+        $hasil_akhir["worst_alternatif"] = array($alternatif[$min[0]] => $arr_hasil[$min[0]]);
+        // var_dump($hasil_akhir);
+        return $hasil_akhir;
     }
 }
