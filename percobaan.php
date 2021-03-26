@@ -1,8 +1,8 @@
 <?php
 require 'vendor/autoload.php';
 
-use afrizalmy\FAHPVikor\Base;
-use afrizalmy\FAHPVikor\Fahp;
+use afrizalmy\FAHP\Base;
+use afrizalmy\FAHP\Fahp;
 
 $kriteria = ["Quality","Origin","Cost","Delivery","After Sales"];
 

@@ -1,7 +1,7 @@
 <?php
 
-namespace afrizalmy\FAHPVikor;
-use afrizalmy\FAHPVikor\Base;
+namespace afrizalmy\FAHP;
+use afrizalmy\FAHP\Base;
 
 class Helper extends Base{
 

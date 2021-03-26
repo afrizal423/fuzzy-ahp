@@ -1,6 +1,6 @@
 <?php
 
-namespace afrizalmy\FAHPVikor;
+namespace afrizalmy\FAHP;
 
 class Base
 {
@@ -36,7 +36,17 @@ class Base
         $this->metrics = $pair_wise;
         return $this->metrics;
     }
-
+    
+    /**
+     * 
+     * Fungsi ini untuk membuat matriks yang nantinya akan di proses perhitungan fuzzy pair wise
+     * 
+     * @param  array  $inputan adalah data kriteria
+     * @param  array  $data_array adalah data dari matriks
+     * @param  int  $nilai adalah nilai kepastian
+     * 
+     * @return array berupa array object seperti kriteria, nilai_pasti dan matriks
+     */
     public function buat_metric(array $inputan, array $data_array, $nilai)
     {
         $this->kriteria = $inputan;

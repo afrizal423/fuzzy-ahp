@@ -1,6 +1,6 @@
 {
-    "name": "afrizalmy/fahp_vikor",
-    "description": "Package sederhana untuk menghitung Sistem Pendukung Keputusan menggunakan metode Fuzzy AHP dan Vikor",
+    "name": "afrizalmy/fahp_dss",
+    "description": "Package sederhana untuk menghitung Sistem Pendukung Keputusan menggunakan metode Fuzzy AHP",
     "require": {
         "php": ">=7.1"
     },
@@ -25,7 +25,7 @@
         }
     ],
     "autoload": {
-        "psr-4": {"afrizalmy\\FAHPVikor\\": "src/"}
+        "psr-4": {"afrizalmy\\FAHP\\": "src/"}
     },
     "minimum-stability": "dev"
 }

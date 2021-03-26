@@ -1,15 +1,22 @@
 <?php
 
-namespace afrizalmy\FAHPVikor;
-use afrizalmy\FAHPVikor\Base;
-use afrizalmy\FAHPVikor\Helper;
-use afrizalmy\FAHPVikor\ErrorHandling;
+namespace afrizalmy\FAHP;
+use afrizalmy\FAHP\Base;
+use afrizalmy\FAHP\Helper;
+use afrizalmy\FAHP\ErrorHandling;
 
 class Fahp extends Base
 {
     protected $kriteria;
     protected $metrics;
 
+    /**
+     * Fungsi ini untuk menghitung fuzzy pair wise.
+     * 
+     * @param  array  $var adalah data array matriks dari langkah pembuatan matriks
+     * 
+     * @return array berupa array yang didalamnya terdapat data matriks tadi.
+     */
     public function FuzzyPairWise(array $var = null)
     {
         $this->kriteria = $var["kriteria"];
@@ -38,6 +45,14 @@ class Fahp extends Base
         return $hasil;
     }
 
+    /**
+     * Fungsi ini untuk menghitung geometric mean.
+     * Silahkan lihat https://blog.pluang.com/cerdascuan/geometric-mean-adalah/
+     * 
+     * @param  array  $var adalah data array matriks dari langkah perhitungan FuzzyPairWise
+     * 
+     * @return array berupa array object seperti increase yang dimana memiliki object lagi seperti min, med, dan max
+     */
     public function HitungGeoMetricMean(array $var = null)
     {
         // var_dump($var);
@@ -71,7 +86,13 @@ class Fahp extends Base
         // var_dump($hasil);
         return $hasil;
     }
-
+    /**
+    * Fungsi ini untuk menghitung bobot.
+    * 
+    * @param  array  $var adalah data array matriks dari langkah perhitungan geometricmean
+    * 
+    * @return array berupa array yang didalamnya adalah bobot setiap kriteria.
+    */
     public function FuzzyWeight(array $var)
     {
         ErrorHandling::checkArrayGM($var);
@@ -127,6 +148,15 @@ class Fahp extends Base
         return $arr_normalized;
     }
 
+    /**
+    * Fungsi ini untuk menghitung semua bobot dari kriteria maupun tiap-tiap alternatif.
+    * 
+    * @param  array  $kriteria adalah data kriteria
+    * @param  array  $arr adalah berupa array object seperti bobot_kriteria dan bobot_alternatif
+    * @param  array  $alternatif adalah data alternatif
+
+    * @return array berupa array object seperti array_bobot, best_alternatif dan worst_alternatif
+    */
     public static function HitungSemuaBobot($kriteria, $arr, $alternatif)
     {
         ErrorHandling::checkHitungSemuaBobot($arr);
